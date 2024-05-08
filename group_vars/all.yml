@@ -3,8 +3,8 @@
 default_username: tess
 github_user: taoyuan
 dot_forward_email: torworx+dev@gmail.com
-private_key: .ssh/id_ed25519
-public_key: .ssh/id_ed25519.pub
+private_key: .ssh/id_rsa
+public_key: .ssh/id_rsa.pub
 ntpserver: pool.ntp.org
 timezone: Asia/Shanghai
 

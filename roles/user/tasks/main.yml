@@ -1,12 +1,12 @@
 ---
 - name: Update default user, belonging to sudo group
   ansible.builtin.user:
-    name: "{{default_username}}"
+    name: "{{ default_username }}"
     password: "{{default_password | password_hash('sha512')}}"
     groups: sudo
-    create_home: yes
+    create_home: true
     shell: /bin/bash
-    generate_ssh_key: yes
+    generate_ssh_key: true
     ssh_key_bits: 2048
     ssh_key_file: .ssh/id_rsa
     update_password: always
@@ -39,12 +39,12 @@
     repo: "https://github.com/olivomarco/dotfiles.git"
     version: master
     dest: "{{item.path}}"
-    accept_hostkey: yes
-    clone: yes
-    update: yes
+    accept_hostkey: true
+    clone: true
+    update: true
   with_items:
-    - {user: "{{default_username}}", path: "/home/{{default_username}}/dotfiles"}
-    - {user: "root", path: "/root/dotfiles"}
+    - { user: "{{default_username}}", path: "/home/{{default_username}}/dotfiles" }
+    - { user: "root", path: "/root/dotfiles" }
 
 # - name: Run dotfiles/setup/setup-user.sh for {{item.user}}
 #   become_user: "{{item.user}}"
@@ -58,22 +58,22 @@
     path: "/home/{{default_username}}/dotfiles"
     owner: "{{default_username}}"
     group: "{{default_username}}"
-    recurse: yes
+    recurse: true
 
 - name: Set authorized keys
   ansible.posix.authorized_key:
     user: "{{default_username}}"
     state: present
-    key: https://github.com/{{github_user}}.keys/    
+    key: "https://github.com/{{github_user}}.keys/"
   when: github_user
 
 - name: Change root password
   ansible.builtin.user:
     name: root
-    password: "{{root_password | password_hash('sha512')}}"
+    password: "{{ root_password | password_hash('sha512') }}"
     update_password: always
 
-- name: chsh to /usr/bin/zsh for default user and root
+- name: Run chsh to /usr/bin/zsh for default user and root
   ansible.builtin.user:
     name: "{{item}}"
     shell: /usr/bin/zsh

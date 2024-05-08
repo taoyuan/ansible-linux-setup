@@ -1,6 +1,16 @@
 ---
-- src: nickjj.fail2ban
-- src: nickjj.docker
-- src: https://github.com/mrlesmithjr/ansible-monit
-- src: jnv.debian-backports
-- src: jnv.unattended-upgrades
+roles:
+  - src: nickjj.fail2ban
+  - src: nickjj.docker
+  - src: https://github.com/mrlesmithjr/ansible-monit
+  - src: jnv.debian-backports
+  - src: jnv.unattended-upgrades
+
+collections:
+  # Install a collection from Ansible Galaxy.
+  - name: community.general
+    version: ">=8.6.0"
+  - name: community.docker
+    version: ">=3.9.0"
+  # - name: ansible.posix
+  #   version: ">=1.5.4"

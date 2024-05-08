@@ -55,8 +55,8 @@
     dest: /etc/ntp.conf
     mode: "0600"
   notify:
-    - restart ntp
-    - restart cron
+    - Restart ntp
+    - Restart cron
 
 - name: Set up exim4 conf
   ansible.builtin.template:
@@ -93,4 +93,4 @@
     - /etc/fail2ban/jail.conf
     - /etc/fail2ban/jail.local
   notify:
-    - restart fail2ban
+    - Restart fail2ban

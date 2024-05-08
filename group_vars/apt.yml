@@ -2,7 +2,7 @@
 # packages to install
 packages_to_install:
     - sudo
-    - python-apt
+    # - python-apt
     - git-core
     - ufw
     - dnsutils
@@ -14,10 +14,10 @@ packages_to_install:
     - jq
     - htop
     - psmisc
-    - python-pip
-    - python3-pip
+    # - python-pip
+    # - python3-pip
     - vim
-    - netcat
+    # - netcat
     - net-tools
     - nmap
     - lynx
@@ -29,13 +29,13 @@ packages_to_install:
     # - logcheck
     - rkhunter
     - cryptsetup
-    - python-glade2
+    # - python-glade2
     - dos2unix
-    - mlocate
+    # - mlocate
     - rclone
     - bc
     - zsh
-    - hddtemp
+    # - hddtemp
     - lm-sensors
     - qemu-guest-agent
     - atop

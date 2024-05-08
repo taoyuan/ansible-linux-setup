@@ -69,9 +69,9 @@ echo "${hostname}" >> hosts
 
 # run ansible
 if [ -z $password_file ] ; then
-    ansible-playbook -i hosts provision.yml --vault-id @prompt
+    ansible-playbook -i hosts provision.yml --vault-id @prompt -K
 else
-    ansible-playbook -i hosts provision.yml --vault-password-file $password_file
+    ansible-playbook -i hosts provision.yml --vault-password-file $password_file -K
 fi
 
 deactivate
