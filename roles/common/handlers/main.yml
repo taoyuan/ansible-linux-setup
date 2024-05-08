@@ -1,20 +1,20 @@
 ---
-- name: restart ntp
-  service:
+- name: Restart ntp
+  ansible.builtin.service:
     name: ntp
     state: restarted
 
-- name: restart cron
-  service:
+- name: Restart cron
+  ansible.builtin.service:
     name: cron
     state: restarted
 
-- name: restart fail2ban
-  service:
+- name: Restart fail2ban
+  ansible.builtin.service:
     name: fail2ban
     state: restarted
 
-- name: restart exim4
-  service:
+- name: Restart exim4
+  ansible.builtin.service:
     name: exim4
     state: restarted

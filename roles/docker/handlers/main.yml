@@ -1,10 +1,10 @@
 ---
-- name: restart docker
-  service:
+- name: Restart docker
+  ansible.builtin.service:
     name: docker
     state: restarted
 
-- name: restart rsyslog
-  service:
+- name: Restart rsyslog
+  ansible.builtin.service:
     name: rsyslog
     state: restarted
