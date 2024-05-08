@@ -1,5 +1,6 @@
 ---
-- hosts: prod
+- name: Run Linux Setup
+  hosts: prod
   vars_files:
     - group_vars/all.yml
     - group_vars/apt.yml
@@ -8,7 +9,7 @@
     - group_vars/networking.yml
     - group_vars/vault.yml
   user: "{{default_username}}"  # run whole script with default user
-  become: yes
+  become: true
   roles:  # order is not random!
     - role: nickjj.fail2ban
       tags: fail2ban
