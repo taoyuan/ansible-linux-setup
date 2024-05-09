@@ -2,7 +2,9 @@
 - name: Run Linux Setup
   hosts: prod
   vars_files:
+    - .default.yml
     - group_vars/all.yml
+    - group_vars/keys.yml
     - group_vars/apt.yml
     - group_vars/docker.yml
     - group_vars/monit.yml
@@ -15,8 +17,15 @@
       tags: fail2ban
     - role: common
       tags: common
-    - role: ufw
-      tags: ufw
+    # - role: exim4
+    #   tags: common
+    - role: viasite-ansible.zsh
+      tags: common
+      zsh_user: "{{default_username}}"
+    - role: nodejs
+      tags: nodejs
+    # - role: ufw
+    #   tags: ufw
     - role: user
       tags: user
     - role: ssh
@@ -27,11 +36,11 @@
     - role: docker
       when: install_docker == true
       tags: docker
-    - role: jnv.debian-backports
-      tags: common
-    - role: ansible-monit
-      tags: common
-    - role: jnv.unattended-upgrades
+    # - role: jnv.debian-backports
+    #   tags: common
+    # - role: ansible-monit
+    #   tags: common
+    - role: hifis.unattended_upgrades
       tags: common
     - role: networking
       tags: networking

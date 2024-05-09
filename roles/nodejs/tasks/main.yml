@@ -1,0 +1,22 @@
+---
+- name: Clone n repository
+  ansible.builtin.git:
+    repo: https://github.com/tj/n.git
+    dest: /tmp/n
+
+- name: Install n
+  become: true
+  ansible.builtin.shell: 
+    cmd: sudo make install
+    chdir: /tmp/n
+
+- name: Install LTS version of Node.js
+  ansible.builtin.shell: 
+    cmd: n lts
+    chdir: /tmp/n
+
+- name: Delete temp n directory
+  ansible.builtin.file:
+    path: /tmp/n
+    state: directory
+    recurse: true

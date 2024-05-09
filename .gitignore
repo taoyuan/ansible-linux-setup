@@ -81,6 +81,11 @@ $RECYCLE.BIN/
 # JetBrains IDE
 .idea/
 
+.default.yml
+
+host_vars/*
+!host_vars/example.yml
+
 # End of https://www.toptal.com/developers/gitignore/api/linux,windows,macos,ansible
 
 /hosts

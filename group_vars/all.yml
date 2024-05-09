@@ -1,7 +1,6 @@
 ---
 # general settings
-default_username: tess
-github_user: taoyuan
+# default_username: us3r
 dot_forward_email: torworx+dev@gmail.com
 private_key: .ssh/id_rsa
 public_key: .ssh/id_rsa.pub
@@ -12,8 +11,8 @@ timezone: Asia/Shanghai
 sshd_port: 22
 
 # generate random passwords for default user and root user
-default_password: "{{lookup('password', '/dev/null length=15 chars=ascii_letters,digits,punctuation')}}"
-root_password: "{{lookup('password', '/dev/null length=15 chars=ascii_letters,digits,punctuation')}}"
+# default_password: "{{lookup('password', '/dev/null length=15 chars=ascii_letters,digits')}}"
+# root_password: "{{lookup('password', '/dev/null length=15 chars=ascii_letters,digits')}}"
 
 # unattended packages install configuration
 unattended_mail: "{{dot_forward_email}}"

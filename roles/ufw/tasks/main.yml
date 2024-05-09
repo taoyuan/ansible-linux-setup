@@ -13,4 +13,4 @@
     state: enabled
     default: deny
     logging: true
-  notify: reload ufw
+  notify: Reload ufw

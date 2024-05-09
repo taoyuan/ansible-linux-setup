@@ -2,9 +2,10 @@
 roles:
   - src: nickjj.fail2ban
   - src: nickjj.docker
+  - src: viasite-ansible.zsh
   - src: https://github.com/mrlesmithjr/ansible-monit
   - src: jnv.debian-backports
-  - src: jnv.unattended-upgrades
+  - src: hifis.unattended_upgrades
 
 collections:
   # Install a collection from Ansible Galaxy.
@@ -12,5 +13,5 @@ collections:
     version: ">=8.6.0"
   - name: community.docker
     version: ">=3.9.0"
-  # - name: ansible.posix
-  #   version: ">=1.5.4"
+  - name: ansible.posix
+    version: ">=1.5.4"

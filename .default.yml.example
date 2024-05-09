@@ -1,0 +1,16 @@
+# The username for running whole script
+default_username: us3r
+# The default_username's password to be updated
+default_password: us3r
+# The root password to be updated
+root_password: us3r
+
+#
+# Authorized keys for default_username
+#
+# setup authorized keys from github
+# github_user: taoyuan
+
+# setup authorized keys from local user ssh key file
+# default is true
+# setup_authorized_keys_from_local: true
