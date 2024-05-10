@@ -42,6 +42,8 @@
     #   tags: common
     - role: hifis.unattended_upgrades
       tags: common
+    - role: sysctl
+      tags: sysctl
     - role: networking
       tags: networking
     - role: reboot
