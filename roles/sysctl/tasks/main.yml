@@ -1,0 +1,47 @@
+---
+# Increase network buffers
+- name: Increase net.core.rmem_default
+  ansible.builtin.sysctl:
+    name: net.core.rmem_default
+    value: 26214400
+    state: present
+    sysctl_set: yes
+
+- name: Increase net.core.rmem_max
+  ansible.builtin.sysctl:
+    name: net.core.rmem_max
+    value: 26214400
+    state: present
+    sysctl_set: yes
+
+- name: Increase net.core.wmem_default
+  ansible.builtin.sysctl:
+    name: net.core.wmem_default
+    value: 26214400
+    state: present
+    sysctl_set: yes
+
+- name: Increase net.core.wmem_max
+  ansible.builtin.sysctl:
+    name: net.core.wmem_max
+    value: 26214400
+    state: present
+    sysctl_set: yes
+
+# tasks file for update_ping_group
+- name: Temporarily set ping_group_range
+  sysctl:
+    name: net.ipv4.ping_group_range
+    value: '0 2147483647'
+    state: present
+    reload: no  # 暂时不重新加载所有 sysctl 设置
+
+- name: Permanently set ping_group_range in sysctl.conf
+  lineinfile:
+    path: /etc/sysctl.conf
+    line: 'net.ipv4.ping_group_range = 0 2147483647'
+    create: yes
+    state: present
+
+- name: Reload sysctl to apply all changes
+  command: sysctl -p    
