@@ -9,7 +9,8 @@ root_password: us3r
 # Authorized keys for default_username
 #
 # setup authorized keys from github
-# github_user: taoyuan
+# github_users: 
+#   - taoyuan
 
 # setup authorized keys from local user ssh key file
 # default is true

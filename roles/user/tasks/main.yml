@@ -72,10 +72,11 @@
 
 - name: Setup authorized keys from github
   ansible.posix.authorized_key:
-    user: "{{default_username}}"
+    user: "{{ default_username }}"
     state: present
-    key: "https://github.com/{{github_user}}.keys/"
-  when: github_user is defined
+    key: "https://github.com/{{ item }}.keys"
+  with_items: "{{ github_users }}"
+  when: github_users is defined
 
 - name: Setup authorized keys from local for {{default_username}}
   ansible.posix.authorized_key:
