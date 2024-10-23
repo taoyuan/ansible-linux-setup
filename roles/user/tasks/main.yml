@@ -1,26 +1,26 @@
 ---
-- name: Update default user, belonging to sudo group
-  ansible.builtin.user:
-    name: "{{ default_username }}"
-    groups: sudo
-    create_home: true
-    shell: /bin/bash
-    generate_ssh_key: true
-    ssh_key_bits: 2048
-    ssh_key_file: .ssh/id_rsa
-    state: present
+# - name: Update default user, belonging to sudo group
+#   ansible.builtin.user:
+#     name: "{{ default_username }}"
+#     groups: sudo
+#     create_home: true
+#     shell: /bin/bash
+#     generate_ssh_key: true
+#     ssh_key_bits: 2048
+#     ssh_key_file: .ssh/id_rsa
+#     state: present
 
-- name: Update user password if default_password is defined
-  ansible.builtin.user:
-    name: "{{ default_username }}"
-    password: "{{ default_password | password_hash('sha512') }}"
-    update_password: always
-  when: default_password is defined
+# - name: Update user password if default_password is defined
+#   ansible.builtin.user:
+#     name: "{{ default_username }}"
+#     password: "{{ default_password | password_hash('sha512') }}"
+#     update_password: always
+#   when: default_password is defined
 
-- name: Set ansible_sudo_pass if default_password is defined
-  ansible.builtin.set_fact:
-    ansible_sudo_pass: "{{ default_password }}"
-  when: default_password is defined
+# - name: Set ansible_sudo_pass if default_password is defined
+#   ansible.builtin.set_fact:
+#     ansible_sudo_pass: "{{ default_password }}"
+#   when: default_password is defined
 
 - name: Ensure sudo group has sudo privileges without password
   ansible.builtin.lineinfile:
@@ -96,12 +96,12 @@
     - "{{ lookup('env','HOME') + '/.ssh/id_*.pub' }}"
   when: setup_authorized_keys_from_local == true  
 
-- name: Change root password
-  ansible.builtin.user:
-    name: root
-    password: "{{ root_password | password_hash('sha512') }}"
-    update_password: always
-  when: root_password is defined
+# - name: Change root password
+#   ansible.builtin.user:
+#     name: root
+#     password: "{{ root_password | password_hash('sha512') }}"
+#     update_password: always
+#   when: root_password is defined
 
 - name: Run chsh to /usr/bin/zsh for default user and root
   ansible.builtin.user:

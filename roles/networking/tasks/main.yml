@@ -1,10 +1,17 @@
 ---
+- name: Check if /etc/network directory exists
+  ansible.builtin.stat:
+    path: /etc/network
+  register: network_dir
+
 - name: Configure /etc/network/interfaces
   ansible.builtin.template:
     src: "{{ interfaces_template }}"
     dest: /etc/network/interfaces
     mode: "0600"
+  when: network_dir.stat.exists
   register: _configure_interfaces
 
 - name: Reboot the machine
   ansible.builtin.reboot:
+  when: network_dir.stat.exists
